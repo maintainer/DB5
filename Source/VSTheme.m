@@ -118,10 +118,8 @@ static UIColor *colorWithHexString(NSString *hexString);
     
 	NSString *colorString = [self stringForKey:key];
 	UIColor *color = colorWithHexString(colorString);
-	if (color == nil)
-		color = [UIColor blackColor];
-
-	[self.colorCache setObject:color forKey:key];
+	if (color)
+        [self.colorCache setObject:color forKey:key];
 
 	return color;
 }
@@ -187,8 +185,7 @@ static UIColor *colorWithHexString(NSString *hexString);
 }
 
 - (CGRect)rectForKey:(NSString *)key {
-    CGRect rect = CGRectFromString([self stringForKey:key]);
-    return rect;
+    return CGRectFromString([self stringForKey:key]);
 }
 
 - (UIViewAnimationOptions)curveForKey:(NSString *)key {
@@ -271,7 +268,7 @@ static UIColor *colorWithHexString(NSString *hexString) {
 	/*Picky. Crashes by design.*/
 	
 	if (stringIsEmpty(hexString))
-		return [UIColor blackColor];
+		return nil;
 
 	NSMutableString *s = [hexString mutableCopy];
 	[s replaceOccurrencesOfString:@"#" withString:@"" options:0 range:NSMakeRange(0, [hexString length])];
