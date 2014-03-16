@@ -35,6 +35,7 @@ typedef NS_ENUM(NSUInteger, VSTextCaseTransform) {
 - (UIFont *)fontForKey:(NSString *)key; /*x and xSize keys*/
 - (CGPoint)pointForKey:(NSString *)key; /*xX and xY keys*/
 - (CGSize)sizeForKey:(NSString *)key; /*xWidth and xHeight keys*/
+- (CGRect)rectForKey:(NSString *)key; /* string "{{0,0},{50,10}}": first pair - origin, second - size*/
 - (NSTimeInterval)timeIntervalForKey:(NSString *)key;
 
 - (UIViewAnimationOptions)curveForKey:(NSString *)key; /*Possible values: easeinout, easeout, easein, linear*/
